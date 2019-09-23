@@ -2,7 +2,10 @@
   "name": "static-web",
   "version": "1.0.0",
   "description": "",
-  "main": "src/app.js",
+  "main": "src/index.js",
+  "bin": {
+    "anydoor": "bin/anydoor"
+  },
   "dependencies": {
     "chalk": "^2.4.2",
     "handlebars": "^4.2.0",

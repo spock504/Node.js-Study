@@ -25,3 +25,8 @@ const argv = yargs
 
 const server = new Server(argv);
 server.start();
+
+
+//  加上执行权限： chmod +x static_Service/bin/anydoor
+//  查看： ls -al static_Service/bin/anydoor
+//  调用： static_Service/bin/anydoor -p 9999
