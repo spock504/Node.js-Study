@@ -1,10 +1,10 @@
 {
-  "name": "static-web",
-  "version": "1.0.0",
+  "name": "any-document",
+  "version": "1.0.1",
   "description": "",
   "main": "src/index.js",
   "bin": {
-    "anydoor": "bin/anydoor"
+    "any-document": "bin/any-document"
   },
   "dependencies": {
     "chalk": "^2.4.2",

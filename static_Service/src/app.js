@@ -30,3 +30,12 @@ server.start();
 //  加上执行权限： chmod +x static_Service/bin/anydoor
 //  查看： ls -al static_Service/bin/anydoor
 //  调用： static_Service/bin/anydoor -p 9999
+
+// 安装：npm install -g nrm
+// 查看npm源：nrm ls
+// 切换源：nrm use [name]　
+
+
+//  pagckage.json中配置bin
+//  登陆npm: npm login
+//  发布npm: npm publish
