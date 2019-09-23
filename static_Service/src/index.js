@@ -4,16 +4,23 @@ const path = require('path');
 const conf = require('./config/defaultConfig.js');
 const route = require('./helper/router.js');
 
+class Server {
+  constructor(config) {
+    this.conf = {...conf, ...config}
+  }
+  start () {
+    const server = http.createServer((req, res) => {
+      //  NOTE: 获取用户当前文件夹
+      const filePath = path.join(this.conf.root, req.url);
+      route(req, res, filePath, this.conf);
+    });
 
-const server = http.createServer((req, res) => {
-  //  NOTE: 获取用户当前文件夹
-  const filePath = path.join(conf.root, req.url);
-  route(req, res, filePath);
-});
-
-server.listen(conf.port, conf.hostname, () => {
-  const addr = `http://${conf.hostname}:${conf.port}/`
-  console.log(`Server running at: ${chalk.green(addr)}`);
-});
+    server.listen(this.conf.port, this.conf.hostname, () => {
+      const addr = `http://${this.conf.hostname}:${this.conf.port}/`
+      console.log(`Server running at: ${chalk.green(addr)}`);
+    });
+  }
+}
+module.exports = Server;
 
 //  supervisor src/index.js

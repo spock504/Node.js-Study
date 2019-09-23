@@ -4,7 +4,6 @@ const Handlebars = require('handlebars');
 const promisify = require('util').promisify;
 const stat = promisify(fs.stat);
 const readdir = promisify(fs.readdir);
-const conf = require('../config/defaultConfig.js');
 const mime = require('./mime.js');
 const compress = require('./compress');
 const range = require('./range');
@@ -15,7 +14,7 @@ const tplPath = path.join(__dirname, '../template/dir.tpl'); //  处理路径最
 const source = fs.readFileSync(tplPath);
 const template = Handlebars.compile(source.toString()); // source 是Buffer对象
 
-module.exports = async function (req, res, filePath) {
+module.exports = async function (req, res, filePath, conf) {
   try {
   //  是文件夹 返回目录，是文件返回内容
     const stats = await stat(filePath);
