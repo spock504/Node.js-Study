@@ -36,6 +36,6 @@ server.start();
 // 切换源：nrm use [name]　
 
 
-//  pagckage.json中配置bin
-//  登陆npm: npm login
-//  发布npm: npm publish
+ // pagckage.json中配置bin
+ // 登陆npm: npm login
+ // 发布npm: npm publish

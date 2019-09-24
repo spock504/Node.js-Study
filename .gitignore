@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+**/node_modules
+**/build
 # roadhog-api-doc ignore
 
 # misc
@@ -15,6 +17,4 @@ yarn.lock
 package-lock.json
 
 # editor
-src/.vscode/*
-base_API/node_modules
-static_Service/node_modules
+**/.vscode
