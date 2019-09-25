@@ -1,7 +1,9 @@
-var a = 1;
-var b = 'c';
+var fun = () => {
+	console.log("this is a test arrow function")
+}
 
-function add (a, b) {
-	return a + b
-};
-add(a,b);
+class test {
+	start() {
+		console.log("this is a test.")
+	}
+}
