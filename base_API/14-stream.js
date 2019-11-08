@@ -4,7 +4,7 @@ const rs = fs.createReadStream('./14-stream.js');
 rs.pipe(process.stdout);  // 比readfile 实现的更加优雅
 
 //  创建可写流
-const ws = fs.createWriteStream('./text.txt');  
+const ws = fs.createWriteStream('./text.txt');
 const tid = setInterval(() => {
 	const num = parseInt(Math.random() * 10)
 	console.log('num:',num)
