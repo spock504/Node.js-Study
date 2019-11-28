@@ -13,7 +13,7 @@ redisClient.get('myname',(err, val) => {
 		console.error("获取值失败 err", err)
 		return 
 	}
-	console.log("获取成功 val",val)
+	console.log("获取成功 val ->>",val)
 	//  退出
 	redisClient.quit()
 })

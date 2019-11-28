@@ -84,6 +84,9 @@ const serverHandle = (req, res) => {
 	}
 	req.session = SESSION_DATA[userId]
 	console.log("请求的 session",req.session,needSetCookie)
+
+	// res.setHeader('Access-Control-Allow-Origin', '*') // 设置跨域请求
+
 	// 处理post data
 	getPostData(req).then(postData => {
 		// console.log("postData", postData)
@@ -97,7 +100,6 @@ const serverHandle = (req, res) => {
 					// 操作cookie (httpOnly 只允许服务端进行修改)
 					res.setHeader('Set-Cookie', `userid=${userId}; path=/; httpOnly; expires=${getCookieExpireTime()}`)
 				}
-
 				res.end(JSON.stringify(blogData))
 				return
 			})
@@ -115,7 +117,6 @@ const serverHandle = (req, res) => {
 				)
 				return
 			})
-
 		}
 		res.writeHead(404, {
 			'Content-type': 'text/plain'

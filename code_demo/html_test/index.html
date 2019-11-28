@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>博客首页</title>
+	<link rel="shortcut icon " type="images/x-icon" href="./favicon.ico">
+	<script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<h1>首页</h1>
+	<script type="text/javascript">
+		function get (url) {
+			return $.get(url)
+		}
+		function post (url, data = {}) {
+			return $.ajax({
+				type: 'post',
+				url,
+				data: JSON.stringify(data),
+				contentType: "application/json",
+			})
+		}
+		let url = ''
+		get('http://localhost:8000/api/blog/list').then((res) => {
+			console.log("res----",res)
+		})
+
+	</script>
+</body>
+</html>
