@@ -1,5 +1,7 @@
 const mysql = require('mysql')
-const { MYSQL_CONF } = require('../conf/db')
+const {
+	MYSQL_CONF
+} = require('../conf/db')
 
 // 创建连接
 const con = mysql.createConnection(MYSQL_CONF)
@@ -8,12 +10,12 @@ const con = mysql.createConnection(MYSQL_CONF)
 con.connect()
 
 // 统一执行sql语句
-function exec (sql) {
-	const promise = new Promise ((resolve, reject) => {
+function exec(sql) {
+	const promise = new Promise((resolve, reject) => {
 		con.query(sql, (err, result) => {
 			if (err) {
-				reject("err====",err)
-				return 
+				reject(err)
+				return
 			}
 			resolve(result)
 		})
@@ -22,5 +24,6 @@ function exec (sql) {
 }
 
 module.exports = {
-	exec
+	exec,
+	escape: mysql.escape,
 }

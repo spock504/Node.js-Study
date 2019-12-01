@@ -1,4 +1,5 @@
 const {exec} = require('../../db/mysql')
+const xss = require('xss')
 
 const getList = (author, keyword) => {
 	let sql = 'select * from blogs where 1=1 ' // 1=1 防止后面两项为空 出现的语法错误
@@ -22,7 +23,8 @@ const getDetail = (id) => {
 
 const newBlog = (blogData = {}) => {
 	// blogData 是一个博客对象 包含title content 属性
-	const {title, content, author} = blogData
+	let {title, content, author} = blogData
+	title = xss(title)
 	const createtime = Date.now()
 	const sql = `
 		insert into blogs (title, content, author, createtime)
