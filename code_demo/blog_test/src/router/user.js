@@ -35,6 +35,7 @@ const handleUserRouter = (req, res) => {
 				req.session.realname = data.realname
 				console.log("session is", req.session)
 				return new SuccessModel(data)
+				return 
 			}
 			return new ErrorModel('账号或密码错误')
 		})
