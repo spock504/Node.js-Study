@@ -31,6 +31,6 @@ gulp # 执行打包命令，将css和js文件分别打包到对应的目录
         >  express 中间件原理: （express-test.js）
         >  测试： 运行： node express-test/test.js
                 操作： 打开浏览器 http://localhost:8233/api/get-cookie 
-                结果： 查看控制台
+                结果： 查看控制台  （很好）
     
 ```
