@@ -3,16 +3,22 @@ var router = express.Router();
 
 router.post('/login', function(req, res, next) {
 	const {
-		username,
-		password
-	} = req.body
-	res.json({
-		error: 0,
-		data: {
-			username,
-			password,
-		}
-	})
+        username,
+        password
+    } = req.request
+    const data = login(username, password)
+    if (data.username) {
+        // 设置 session 
+        ctx.session.username = data.username
+        ctx.session.realname = data.realname
+		res.json(
+			new SuccessModel(data)
+		)
+        return
+	}
+	res.json(
+		new ErrorModel('账号或密码错误')
+	)
 });
 
 router.get('/session-test', (req, res, next) => {
