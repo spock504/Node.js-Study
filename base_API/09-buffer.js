@@ -9,4 +9,4 @@ const buf1 = Buffer.from('this');
 const buf2 = Buffer.from(' is');
 const buf3 = Buffer.from(' test !');
 const buf = Buffer.concat([buf1, buf2, buf3])
-console.log('buf--',buf.toString()). // buffer 的拼接
+console.log('buf--',buf.toString()) // buffer 的拼接
