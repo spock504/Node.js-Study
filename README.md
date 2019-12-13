@@ -5,6 +5,7 @@
 > - 文件名即对应相应node的操作
 
 ### 2. static_Service
+实现在浏览器中查看文件
 1.  发布一个npm的安装包  
 > - 主文件： app.js  
 > - pagckage.json中配置bin  

@@ -9,7 +9,6 @@ const compress = require('./compress');
 const range = require('./range');
 const isFresh = require('./cache');
 
-
 const tplPath = path.join(__dirname, '../template/dir.tpl'); //  处理路径最好用绝对路径
 const source = fs.readFileSync(tplPath);
 const template = Handlebars.compile(source.toString()); // source 是Buffer对象
