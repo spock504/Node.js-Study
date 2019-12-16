@@ -1,50 +1,37 @@
 
 import React from 'react'
-import { List } from 'antd';
-import { getBlogList } from '../../../server/blog'
+import { connect } from 'dva';
+import { List, Card } from 'antd';
+import Link from 'umi/link';
 
+class BlogListPage extends React.Component {
 
-export default class BlogListPage extends React.Component {
-    
-
-    componentDidMount() {
-        const params = {
-            isAdmin: 1
-        }
-        getBlogList(params).then(res => {
-            console.log("获取列表成功",res)
-        })
+  componentDidMount() {
+    const params = {
+      isAdmin: 1
     }
+    this.props.dispatch({
+      type: 'blogModal/getBlogList',
+      payload: params,
+    })
+  }
 
-    
-    render() {
-        const data = [
-            {
-              title: 'Ant Design Title 1',
-            },
-            {
-              title: 'Ant Design Title 2',
-            },
-            {
-              title: 'Ant Design Title 3',
-            },
-            {
-              title: 'Ant Design Title 4',
-            },
-          ];
-        return (
-            <List
-            itemLayout="horizontal"
-            dataSource={data}
-            renderItem={item => (
-              <List.Item>
-                <List.Item.Meta
-                  title={<a href="https://ant.design">{item.title}</a>}
-                  description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-                />
-              </List.Item>
-            )}
-          />
-        )
-    }
+  render() {
+    const { blogList = [] } = this.props.blogModal
+    return (
+      <List
+        grid={{ gutter: 16, column: 4 }}
+        dataSource={blogList}
+        renderItem={item => (
+          <List.Item>
+            <Card title={<Link to={`/blog/detail/${item.id}`}>{item.title}</Link>}>{item.content}</Card>
+          </List.Item>
+        )}
+      />
+    )
+  }
 }
+
+export default connect(({ blogModal }) => ({
+  blogModal,
+}))(BlogListPage);

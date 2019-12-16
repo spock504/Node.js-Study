@@ -1,7 +1,7 @@
 import React from 'react'
 import router from 'umi/router';
 import { Form, Icon, Input, Button, Row, message } from 'antd';
-import { setUserLogin } from '../server/user'
+import { setUserLogin } from '../servers/user'
 import styles from './index.css';
 
 class NormalLoginForm extends React.Component {
