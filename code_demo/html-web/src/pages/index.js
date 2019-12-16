@@ -1,16 +1,27 @@
 import React from 'react'
-import { Form, Icon, Input, Button, Row } from 'antd';
-import styles from  './index.css';
+import router from 'umi/router';
+import { Form, Icon, Input, Button, Row, message } from 'antd';
+import { setUserLogin } from '../server/user'
+import styles from './index.css';
 
 class NormalLoginForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        setUserLogin(values).then((res) => {
+          if (!res.errno) {
+            message.success('登陆成功！');
+            router.push('/blog/list'); // 登陆成功 跳转到博客列表页
+          }
+        })
       }
     });
   };
+
+  componentDidMount() {
+    
+  }
 
   render() {
     const { getFieldDecorator } = this.props.form;

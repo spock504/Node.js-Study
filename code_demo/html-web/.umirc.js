@@ -8,7 +8,7 @@ export default {
       antd: true,
       dva: true,
       dynamicImport: { webpackChunkName: true },
-      title: 'html-web',
+      title: 'youho博客',
       dll: true,
       locale: {
         enable: true,
@@ -25,4 +25,11 @@ export default {
       },
     }],
   ],
+  proxy: {
+    "/api": {
+      target: "http://localhost:8222/",
+      pathRewrite: { '^/api': '/api' },
+      changeOrigin: true
+    }
+  }
 }
