@@ -52,7 +52,7 @@ router.post('/new', loginCheck, async (ctx, next) => {
 router.post('/update', loginCheck, async (ctx, next) => {
     const {
         id
-    } = ctx.query
+    } = ctx.request.body
     const val = await updateBlog(id, ctx.request.body)
     if (val) {
         ctx.body = new SuccessModel()
@@ -64,7 +64,7 @@ router.post('/update', loginCheck, async (ctx, next) => {
 router.post('/delete', loginCheck, async (ctx, next) => {
     const {
         id
-    } = ctx.query
+    } = ctx.request.body
     const author = ctx.session.username
     const val = await deleteBlog(id, author)
     if (val) {
