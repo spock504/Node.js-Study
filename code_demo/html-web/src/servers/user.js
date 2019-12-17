@@ -17,8 +17,9 @@ request.use(async (ctx, next) => {
     }
 })
 
-export function setUserLogin(params) {
+export function setUserLoginApi(params) {
     return request.post('/login',{
         data: params
     })
 }
+

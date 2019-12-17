@@ -1,7 +1,7 @@
 import React from 'react'
+import { connect } from 'dva';
 import router from 'umi/router';
 import { Form, Icon, Input, Button, Row, message } from 'antd';
-import { setUserLogin } from '../servers/user'
 import styles from './index.css';
 
 class NormalLoginForm extends React.Component {
@@ -9,8 +9,10 @@ class NormalLoginForm extends React.Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        setUserLogin(values).then((res) => {
-          if (!res.errno) {
+        this.props.dispatch({
+          type: 'userLogin/setUserLogin',
+          payload: values,
+          callback: () => {
             message.success('登陆成功！');
             router.push('/blog/list'); // 登陆成功 跳转到博客列表页
           }
@@ -18,10 +20,6 @@ class NormalLoginForm extends React.Component {
       }
     });
   };
-
-  componentDidMount() {
-    
-  }
 
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -59,5 +57,6 @@ class NormalLoginForm extends React.Component {
 }
 
 const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(NormalLoginForm);
-
-export default WrappedNormalLoginForm
+export default connect(({ userLogin }) => ({
+  userLogin,
+}))(WrappedNormalLoginForm);

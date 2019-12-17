@@ -16,3 +16,15 @@ export function getBlogDetailApi(params = {}) {
         params: params
     })
 }
+
+export function updateBlogDetailApi(params = {}) {
+    return request.post('/update', {
+        data: params
+    })
+}
+
+export function setNewBlogApi(params = {}) {
+    return request.post('/new', {
+        data: params
+    })
+}

@@ -64,7 +64,7 @@ router.post('/new', loginCheck, (req, res, next) => {
 router.post('/update', loginCheck, (req, res, next) => {
 	const {
 		id
-	} = req.query
+	} = req.body
 	const result = updateBlog(id, req.body)
 	return result.then(val => {
 		if (val) {

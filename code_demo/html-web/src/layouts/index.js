@@ -1,4 +1,6 @@
 import styles from './index.css';
+import withRouter from 'umi/withRouter';
+import { connect } from 'dva';
 
 function BasicLayout(props) {
   return (
@@ -9,4 +11,5 @@ function BasicLayout(props) {
   );
 }
 
-export default BasicLayout;
+// export default BasicLayout;
+export default withRouter(connect()(BasicLayout));
