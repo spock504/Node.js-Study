@@ -35,17 +35,19 @@ any-document -d /user # 设置根目录为user
 2. glup的配置: gulpfile.js
 ### 4. code_demo 
 > 利用node开发一个简单的博客系统<包括登陆>  
+1. blog_test: 不使用框架构建服务   
+    * app.js 为主入口, 运行命令: `npm run dev`  
+2. blog-express: 使用express框架构建服务  
+    * app.js 为主入口, 运行命令: `npm run dev`    
+    > express 中间件原理: lib/express-test  
+3. blog-koa : 使用koa2 框架构建服务  
+    * app.js 为主入口, 运行命令: `npm run dev`    
+    > koa2 中间件原理: lib/koa2   
+4. pm2-test: pm2 测试  
+    * app.js 为主入口, 运行命令: `npm run prd`    
+5. html-test 
+    * umi 构建前端博客登陆、列表及详情页面。  
+ 运行命令: `npm run start`    
 
-    1. blog_test: 不使用框架构建服务
-        app.js 为主入口
-    2. blog-express: 使用express框架构建服务
-        app.js 为主入口
-> express 中间件原理: lib/express-test  
-
-    3. blog-koa : 使用koa2 框架构建服务
-> koa2 中间件原理: lib/koa2   
-
-    4. pm2-test: pm2 测试
-    运行： npm run prd
   
     
