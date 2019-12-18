@@ -69,8 +69,7 @@ const handleBlogRouter = (req, res) => {
 			// 未登录
 			return loginCheckResult
 		}
-
-		const result = updateBlog(id, req.body)
+		const result = updateBlog(req.body)
 		return result.then(val => {
 			if (val) {
 				return new SuccessModel()
@@ -88,7 +87,7 @@ const handleBlogRouter = (req, res) => {
 			return loginCheckResult
 		}
 		const author = req.session.username
-		const result = deleteBlog(id, author)
+		const result = deleteBlog(req.body.id, author)
 		return result.then(val => {
 			if (val) {
 				return new SuccessModel()

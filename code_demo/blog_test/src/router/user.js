@@ -6,15 +6,6 @@ const {
 	ErrorModel
 } = require('../model/resModel')
 
-// 设置cookie过期时间
-const getCookieExpireTime = () => {
-	const d = new Date()
-	const expireTime = 24 * 60 * 60 * 1000
-	d.setTime(d.getTime() + expireTime)
-	// console.log("expireTime",d.toGMTString())
-	return d.toGMTString()
-}
-
 const handleUserRouter = (req, res) => {
 	const {
 		url,
@@ -25,7 +16,7 @@ const handleUserRouter = (req, res) => {
 		const {
 			username,
 			password
-		} = req.query
+		} = req.body
 		const result = login(username, password)
 		console.log("username", username, password)
 		return result.then(data => {
@@ -35,7 +26,6 @@ const handleUserRouter = (req, res) => {
 				req.session.realname = data.realname
 				console.log("session is", req.session)
 				return new SuccessModel(data)
-				return 
 			}
 			return new ErrorModel('账号或密码错误')
 		})

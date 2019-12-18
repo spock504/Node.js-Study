@@ -15,14 +15,14 @@ const getCookieExpireTime = () => {
 	return d.toGMTString()
 }
 
-// 用于处理post data
+// 用于处理post data(POST 数据以流的方式处理)
 const getPostData = (req) => {
 	const promise = new Promise((resolve, reject) => {
 		if (req.method !== 'POST') {
 			resolve({})
 			return
 		}
-		if (req.headers['content-type'] !== 'application/json') {
+		if (req.headers['content-type'].indexOf('application/json') === -1) {
 			resolve({})
 			return
 		}
@@ -30,7 +30,9 @@ const getPostData = (req) => {
 		req.on('data', chunk => {
 			postData += chunk.toString()
 		})
+		
 		req.on('end', () => {
+			// console.log("end postData",postData)
 			if (!postData) {
 				resolve({})
 				return
@@ -93,7 +95,7 @@ const serverHandle = (req, res) => {
 	// 处理post data
 	getPostData(req).then(postData => {
 		// console.log("postData", postData)
-		req.body = postData
+		req.body = postData  // post的数据
 
 		// 处理blog路由
 		const blogResult = handleBlogRouter(req, res)

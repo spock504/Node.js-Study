@@ -38,8 +38,8 @@ const newBlog = (blogData = {}) => {
 	})
 }
 
-const updateBlog = (id, blogData = {}) => {
-	const {title, content} = blogData
+const updateBlog = (blogData = {}) => {
+	const {title, content, id} = blogData
 	const sql = `
 		update blogs set title = '${title}', content = '${content}' where id = '${id}'
 	`
