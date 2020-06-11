@@ -14,17 +14,17 @@ class Crowller {
   // 创建私有类
   private filePath = path.resolve(__dirname, '../data/course.json');
 
-  async getRawHtml() {
+  private async getRawHtml() {
     const result = await superagent.get(this.url);
     return result.text;
   }
 
-  writeFile(content: string) {
+  private writeFile(content: string) {
     fs.writeFileSync(this.filePath, content); // 存数据
   }
 
   //  优化结构方法：爬虫初始化
-  async initSpiderProcess() {
+  private async initSpiderProcess() {
     const html = await this.getRawHtml(); // 获取html
     const fileContent = this.analyzer.analyze(html, this.filePath);
     this.writeFile(fileContent);
@@ -38,5 +38,5 @@ class Crowller {
 
 // 采用组合设计模式 优化爬虫代码
 const url = `www.imooc.com`;
-const analyzer = new Analyzer(); // 分析器
+const analyzer = Analyzer.getInstance(); // 分析器
 new Crowller(url, analyzer); // 爬虫工具

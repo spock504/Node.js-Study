@@ -15,6 +15,13 @@ interface Content {
 }
 // 分析器
 export default class Analyzer {
+  private static instance: Analyzer;
+  static getInstance() {
+    if (!Analyzer.instance) {
+      Analyzer.instance = new Analyzer();
+    }
+    return Analyzer.instance;
+  }
   private getJsonInfo(html: string) {
     const $ = cheerio.load(html); // 加载html
     const imglist = $('.index-card-container'); // 获取dom节点
@@ -52,4 +59,5 @@ export default class Analyzer {
     const fileContent = this.generateJsonContent(result, filePath); // 读取文件
     return fileContent;
   }
+  private constructor() {}
 }
