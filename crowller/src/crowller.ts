@@ -40,3 +40,4 @@ class Crowller {
 const url = `www.imooc.com`;
 const analyzer = Analyzer.getInstance(); // 分析器
 new Crowller(url, analyzer); // 爬虫工具
+console.log('改变了');
